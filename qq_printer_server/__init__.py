@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
+import os
 
 
 APP = Flask(__name__)
@@ -18,11 +19,12 @@ POSTGRES = {
 }
 
 APP.config['DEBUG'] = True
+APP.config['UPLOAD_FOLDER'] = os.path.abspath('uploaded_files')
+
 APP.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql+psycopg2://%(user)s:' \
-                                        '%(password)s@%(host)s:%(port)s' % POSTGRES
+                                        '%(password)s@%(host)s:%(port)s/%(database)s' % POSTGRES
 
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 
 DATABASE = SQLAlchemy(APP)
 MARSHMALLOW = Marshmallow(APP)

@@ -9,7 +9,8 @@ class File(DATABASE.Model):
     filename = DATABASE.Column(DATABASE.VARCHAR, nullable=False)
     user_id = DATABASE.Column(DATABASE.INTEGER, nullable=False)
     datetime = DATABASE.Column(DATABASE.DateTime, default=datetime.now(), nullable=False)
-    price = DATABASE.Column(DATABASE.Numeric(precision=2, asdecimal=False, decimal_return_scale=False), nullable=False)
+    price = DATABASE.Column(DATABASE.Numeric(precision=6, asdecimal=False, decimal_return_scale=False, scale=2),
+                            nullable=False)
     payment = DATABASE.Column(DATABASE.Boolean, default=False)
 
     def __init__(self, filename, user_id, price):
