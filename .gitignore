@@ -115,6 +115,9 @@ celerybeat-schedule
 .dmypy.json
 dmypy.json
 
+# migrations
+migrations/
+
 # Pyre type checker
 .pyre/
 
